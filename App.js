@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { StatusBar } from "expo-status-bar";
 import { StyleSheet, ImageBackground } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
@@ -52,23 +53,26 @@ export default function App() {
 
 
   return (
-    <SafeAreaProvider>
-      <LinearGradient
-        colors={[Colors.primary700, Colors.accent500]}
-        style={styles.rootScreen}
-      >
-        <ImageBackground
-          source={require("./assets/background.png")}
+    <>
+      <StatusBar style="light" />
+      <SafeAreaProvider>
+        <LinearGradient
+          colors={[Colors.primary700, Colors.accent500]}
           style={styles.rootScreen}
-          resizeMode="cover"
-          imageStyle={styles.backgroundImage}
         >
-          <SafeAreaView style={styles.rootScreen}>
-            {screen}
-          </SafeAreaView>
-        </ImageBackground>
-      </LinearGradient>
-    </SafeAreaProvider>
+          <ImageBackground
+            source={require("./assets/background.png")}
+            style={styles.rootScreen}
+            resizeMode="cover"
+            imageStyle={styles.backgroundImage}
+          >
+            <SafeAreaView style={styles.rootScreen}>
+              {screen}
+            </SafeAreaView>
+          </ImageBackground>
+        </LinearGradient>
+      </SafeAreaProvider>
+    </>
   );
 }
 
