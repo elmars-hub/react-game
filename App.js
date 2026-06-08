@@ -20,18 +20,18 @@ export default function App() {
     "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
   });
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
+  // if (!fontsLoaded) {
+  //   return <AppLoading />;
+  // }
 
   function pickedNumberHandler(pickedNumber) {
     setUserNumber(pickedNumber);
-    setGameIsOver(false)
+    setGameIsOver(false);
   }
 
   function gameOverHandler(numberOfRounds) {
     setGameIsOver(true);
-    setGuessRounds(numberOfRounds)
+    setGuessRounds(numberOfRounds);
   }
 
   function playAgainHandler() {
@@ -43,14 +43,20 @@ export default function App() {
   let screen = <StartGameScreen onPickedNumber={pickedNumberHandler} />;
 
   if (userNumber) {
-    screen = <GameScreen userNumber={userNumber} onGameOver={gameOverHandler} />;
+    screen = (
+      <GameScreen userNumber={userNumber} onGameOver={gameOverHandler} />
+    );
   }
 
   if (gameIsOver && userNumber) {
-    screen = <GameOverScreen userNumber={userNumber} roundsNumber={guessRounds} onPlayAgain={playAgainHandler} />;
+    screen = (
+      <GameOverScreen
+        userNumber={userNumber}
+        roundsNumber={guessRounds}
+        onPlayAgain={playAgainHandler}
+      />
+    );
   }
-
-
 
   return (
     <>
@@ -66,9 +72,7 @@ export default function App() {
             resizeMode="cover"
             imageStyle={styles.backgroundImage}
           >
-            <SafeAreaView style={styles.rootScreen}>
-              {screen}
-            </SafeAreaView>
+            <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
           </ImageBackground>
         </LinearGradient>
       </SafeAreaProvider>
