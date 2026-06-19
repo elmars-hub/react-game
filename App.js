@@ -60,7 +60,7 @@ export default function App() {
 
   return (
     <>
-      {/* <StatusBar style="light" /> */}
+      <StatusBar style="light" />
       <SafeAreaProvider>
         <LinearGradient
           colors={[Colors.primary700, Colors.accent500]}
